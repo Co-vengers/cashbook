@@ -73,7 +73,7 @@ It allows you to add, view, and delete cashbook entries.
 6. **Run the application**
 
    ```bash
-   python controllers.py
+   python app.py
    ```
 
 7. **Access the app**
