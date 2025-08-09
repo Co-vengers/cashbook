@@ -9,6 +9,8 @@ It allows you to add, view, and delete cashbook entries.
 - View all entries
 - Delete entries
 - Input validation and error handling
+- Flash messages for user feedback
+- Environment variable support for configuration
 
 ## Requirements
 
@@ -16,13 +18,14 @@ It allows you to add, view, and delete cashbook entries.
 - MySQL server
 - `mysql-connector-python` package
 - Flask
+- `python-dotenv` package
 
 ## Setup
 
 1. **Clone the repository**
 
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/Co-vengers/cashbook
    cd cashbook
    ```
 
@@ -36,7 +39,7 @@ It allows you to add, view, and delete cashbook entries.
 3. **Install dependencies**
 
    ```bash
-   pip install flask mysql-connector-python
+   pip install flask mysql-connector-python python-dotenv
    ```
 
 4. **Set up the MySQL database**
@@ -55,14 +58,16 @@ It allows you to add, view, and delete cashbook entries.
    );
    ```
 
-5. **Configure database credentials**
+5. **Configure environment variables**
 
-   Update the credentials in `models.py` if needed:
-   ```python
-   host='localhost',
-   user='root',
-   password='your_mysql_password',
-   database='cashbook_db'
+   Create a `.env` file in the project root with the following content:
+
+   ```
+   db_host=localhost
+   db_user=root
+   db_password=your_mysql_password
+   db_name=cashbook_db
+   flask_secret_key=your_secret_key
    ```
 
 6. **Run the application**
@@ -80,6 +85,7 @@ It allows you to add, view, and delete cashbook entries.
 - `models.py` — Database operations
 - `controllers.py` — Flask routes and app logic
 - `templates/index.html` — Main HTML template
+- `.env` — Environment variables for configuration
 
 ## Usage
 
@@ -94,4 +100,4 @@ MIT License
 ---
 
 **Note:**  
-Make sure your MySQL server is running and accessible with the credentials provided in
+Make sure your MySQL server is running and accessible with the credentials provided in your `.env
