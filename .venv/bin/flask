@@ -1,4 +1,4 @@
-#!/home/vyom-rohila/Flask/cashbook/.venv/bin/python3
+#!/Users/vyomrohila/Documents/coding/Flask/cashbook/.venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

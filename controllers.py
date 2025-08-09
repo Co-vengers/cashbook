@@ -1,8 +1,11 @@
 from flask import Flask, request, render_template, redirect, flash
 from models import Database
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Required for flashing messages
+app.secret_key = os.getenv('flask_secret_key')  # Required for flashing messages
 db = Database()
 
 @app.route('/')
@@ -32,6 +35,11 @@ def add_entry():
     except Exception as e:
         flash(f'An error occurred: {str(e)}')
 
+    return redirect('/')
+
+@app.route('/delete/<int:entry_id>', methods=['POST'])
+def delete_entry(entry_id):
+    db.delete_entry(entry_id)
     return redirect('/')
 
 @app.teardown_appcontext
