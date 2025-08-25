@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 app = Flask(__name__)
-app.secret_key = os.getenv('flask_secret_key')  # Required for flashing messages
+app.secret_key = os.getenv('flask_secret_key')
 db = Database()
 
 @app.route('/')
@@ -20,13 +20,11 @@ def add_entry():
     amount = request.form.get('amount')
     entry_type = request.form.get('type')
 
-    # Input validation
     if not date or not description or not amount or not entry_type:
         flash('All fields are required!')
         return redirect('/')
 
     try:
-        # Assuming amount should be a float
         amount = float(amount)
         db.add_entry(date, description, amount, entry_type)
         flash('Entry added successfully!')
