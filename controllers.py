@@ -43,6 +43,3 @@ def delete_entry(entry_id):
 @app.teardown_appcontext
 def close_db(error):
     db.close()
-
-if __name__ == '__main__':
-    app.run(debug=True)
